@@ -15,6 +15,7 @@ let btnHold = document.querySelector('.btn--hold');
 let diceImg = document.querySelector('.dice');
 document.getElementById(`score--0`).textContent = 0;
 document.getElementById(`score--1`).textContent = 0;
+// document.getElementById('popup').classList.add('hidden');
 
 if (gameStart == false) {
   diceImg.classList.add('hidden');
@@ -68,11 +69,14 @@ btnHold.addEventListener('click', function () {
   document.getElementById(`score--${playerNo}`).textContent = score[playerNo];
   currentScore = 0;
   document.getElementById(`current--${playerNo}`).textContent = currentScore;
-  if (score[playerNo] >= 100) {
+  if (score[playerNo] >= 20) {
     document
       .querySelector(`.player--${playerNo}`)
       .classList.add('player--winner');
     gameWin = true;
+    document.getElementById('winnerMessage').textContent =
+      `Player ${playerNo + 1} Wins (^_^)`;
+    document.getElementById('overlay').classList.remove('hidden');
     return;
   }
   switchPlayer();
@@ -80,6 +84,7 @@ btnHold.addEventListener('click', function () {
 
 // new game button funcrtionality
 let newGame = function () {
+  document.getElementById('overlay').classList.add('hidden');
   document
     .querySelector(`.player--${playerNo}`)
     .classList.remove('player--winner');
@@ -97,3 +102,11 @@ let newGame = function () {
   document.getElementById(`score--${0}`).textContent = score[0];
   document.getElementById(`score--${1}`).textContent = score[1];
 };
+
+// overlay button functionality
+document.getElementById('overlay').addEventListener('click', function (e) {
+  // Only close if the click is directly on the overlay, not inside the popup box
+  if (e.target.id === 'overlay') {
+    document.getElementById('overlay').classList.add('hidden');
+  }
+});

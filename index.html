@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -30,6 +30,12 @@
       <button class="btn btn--new">🔄 New game</button>
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
+      <!-- Overlay + Popup -->
+      <div id="overlay" class="overlay hidden">
+        <div class="popup-content">
+          <h2 id="winnerMessage">Player 1 Wins 🎉</h2>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>
